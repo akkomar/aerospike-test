@@ -1,12 +1,12 @@
 ### Start aerospike server in Docker container
 ```
-docker run --rm -ti --name aerospike-tools --link aerospike:aerospike -v $(pwd)/scripts:/scripts aerospike/aerospike-tools aql -c "select * from test_ns.s"
+docker run --rm -v $(pwd)/etc:/opt/aerospike/etc --name aerospike aerospike/aerospike-server --config-file /opt/aerospike/etc/aerospike.conf
 ```
 and observe the log.
 ### Data loader
 Loader is located in `/client` directory. It can be started by running `LoadData` class, or via console:
 ```
-cd loader
+cd client
 ./sbt run
 ```
 It will run in a loop. After starting, observe server's log, it will start printing:
